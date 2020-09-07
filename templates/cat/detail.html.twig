@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ cat.name }} | chatons.com
+{% endblock %}
+
+{% block body %}
+    <article class="cat-detail">
+        <div class="left-col">
+            <img src="{{ asset('img/'~cat.filename) }}" alt="{{ cat.name }}">
+            <div class="price">{{ cat.price }}€ seulement</div>
+            <button id="cart-add-button">Ajouter au panier !</button>
+        </div>
+        <div>
+            <h1>{{ cat.name }}</h1>
+            <p class="date">Ajouté le {{ cat.dateCreated|date("d-m-Y") }}</p>
+            <div>{{ cat.description|nl2br }}</div>
+        </div>
+    </article>
+{% endblock %}
+

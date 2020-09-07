@@ -1,0 +1,136 @@
+html, body {
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    background-image: url("bg.png");
+}
+
+.container {
+    max-width: 1192px;
+    margin: auto;
+    padding: 0 15px;
+    background-color: rgba(255,255,255,0.7);
+    min-height: 100vh;
+    border-left: 1px solid #FAE8FA;
+    border-right: 1px solid #FAE8FA;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1 {
+    font-weight: normal;
+}
+
+h1, h2, h3, h4 {
+    margin-top: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 5px dotted hotpink;
+    margin-bottom: 25px;
+}
+
+.logo {
+    font-size: 24px;
+}
+
+.cat-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cat-list article {
+    padding: 5px;
+    border: 1px solid #EEE;
+    border-radius: 3px;
+    margin: 3px;
+    display: flex;
+    align-items: center;
+    background-color: #FAFAFA;
+    box-sizing: border-box;
+    transition: transform .2s;
+}
+
+.cat-list article:hover {
+    transform: scale(1.1);
+}
+
+.cat-list img {
+    display: block;
+    max-width: 100%;
+}
+
+.cat-detail {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.cat-detail img {
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+
+.price {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+    border: 5px dotted hotpink;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+button {
+    display: block;
+    background: none;
+    border: none;
+    outline: none;
+    background-color: hotpink;
+    padding: 6px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background-color: deeppink;
+}
+
+@media screen and (min-width: 523px){
+    .container {
+        max-width: 478px;
+    }
+    .cat-list img {
+        max-width: 220px;
+    }
+}
+
+@media screen and (min-width: 761px){
+    .container {
+        max-width: 716px;
+    }
+
+    .left-col {
+        margin-right: 20px;
+    }
+
+    .cat-detail {
+        flex-direction: row;
+    }
+}
+
+@media screen and (min-width: 999px){
+    .container {
+        max-width: 954px;
+    }
+}

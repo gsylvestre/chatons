@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="cat-list">
+        {% for cat in cats %}
+            <article>
+                <a href="{{ path('cat_detail', {'id': cat.id}) }}" title="Voir {{ cat.name }} en détails !">
+                    <img src="{{ asset('img/'~cat.filename) }}" alt="{{ cat.name }}">
+                </a>
+            </article>
+        {% endfor %}
+    </section>
+{% endblock %}
+
+{% block title %}
+    chatons.com
+{% endblock %}
+
