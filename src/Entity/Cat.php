@@ -8,8 +8,42 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=CatRepository::class)
  */
-class Cat
+class Cat implements \JsonSerializable
 {
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->getId(),
+            'name' => $this->getName(),
+            'filename' => $this->getFilename(),
+            'description' => $this->getDescription(),
+            'dateCreated' => $this->getDateCreated(),
+            'isSold' => $this->getIsSold(),
+            'price' => $this->getPrice(),
+            'url' => $this->getUrl(),
+        ];
+    }
+
+    private $url;
+
+    /**
+     * @return mixed
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * @param mixed $url
+     */
+    public function setUrl($url): void
+    {
+        $this->url = $url;
+    }
+
+
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

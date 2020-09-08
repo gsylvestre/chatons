@@ -15,13 +15,10 @@
 <div class="container">
     <header>
         <a href="{{ path('home') }}" title="Retour à l'accueil" class="logo"><img src="{{ asset('img/logo.png') }}" alt="logo chatons.com">chatons.com</a>
-        <form id="search-form">
+        <form id="search-form" action="{{ url('api_cats_search') }}">
             <label for="keyword">Rechercher</label>
             <input type="search" id="keyword" name="keyword">
-            <div id="results">
-                <a href="#">Gaston</a>
-                <a href="#">Guy</a>
-            </div>
+            <div id="results"></div>
         </form>
         <nav>
             <a href="#" class="cart-link" title="Voir mon panier"><img src="{{ asset('img/cart.png') }}" alt="Panier"></a>
