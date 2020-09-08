@@ -8,22 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=CatRepository::class)
  */
-class Cat implements \JsonSerializable
+class Cat
 {
-    public function jsonSerialize()
-    {
-        return [
-            'id' => $this->getId(),
-            'name' => $this->getName(),
-            'filename' => $this->getFilename(),
-            'description' => $this->getDescription(),
-            'dateCreated' => $this->getDateCreated(),
-            'isSold' => $this->getIsSold(),
-            'price' => $this->getPrice(),
-            'url' => $this->getUrl(),
-        ];
-    }
-
     private $url;
 
     /**

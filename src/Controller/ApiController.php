@@ -7,7 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Validator\Constraints\Json;
+
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 class ApiController extends AbstractController
 {
@@ -27,7 +30,13 @@ class ApiController extends AbstractController
             $foundCat->setUrl($detailUrl);
         }
 
-        return new JsonResponse(['cats' => $foundCats]);
+        //permet de convertir la liste des chatons en json (sinon les objets sont vides)
+        $serializer = new Serializer([new ObjectNormalizer()], [new JsonEncoder()]);
+        //convertie en json, en omettant l'attribut dateCreated
+        $jsonContent = $serializer->serialize(['cats' => $foundCats], 'json', ['ignored_attributes' => ['dateCreated']]);
+
+        //faut faire comme ça quand les données sont déjà converties en json !
+        return JsonResponse::fromJsonString($jsonContent);
     }
 
     /**
