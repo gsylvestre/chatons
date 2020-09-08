@@ -3,7 +3,9 @@ const addToCartButton = document.getElementById("cart-add-button");
 
 //pour le mettre sous écoute du clic
 //au clic, déclencher la requête ajax
-addToCartButton.addEventListener("click", addToCart);
+if (addToCartButton) {
+    addToCartButton.addEventListener("click", addToCart);
+}
 
 //ajoute un chaton au panier, en ajax
 function addToCart(event) {

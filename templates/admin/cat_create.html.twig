@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin | Ajout d'un nouveau chat{% endblock %}
+
+{% block body %}
+    <h1>Ajoutez un nouveau chaton !</h1>
+    {{ form_start(catForm, {attr: {id: "create-cat-form"}}) }}
+    {{ form_widget(catForm) }}
+    <button>Créer le minou</button>
+    {{ form_end(catForm) }}
+{% endblock %}

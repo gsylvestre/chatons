@@ -156,6 +156,11 @@ footer {
     text-align: center;
 }
 
+#create-cat-form label {
+    display: block;
+    margin: 10px 0 3px 0;
+}
+
 @media screen and (min-width: 523px){
     .container {
         max-width: 478px;
