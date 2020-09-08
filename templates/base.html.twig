@@ -35,6 +35,9 @@
         <div>Logo made by <a href="https://smashicons.com/" title="Smashicons">Smashicons</a></div>
     </footer>
 </div>
-{% block javascripts %}{% endblock %}
+{% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+{% endblock %}
 </body>
 </html>
