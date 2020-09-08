@@ -7,7 +7,7 @@
 {% block body %}
     <article class="cat-detail">
         <div class="left-col">
-            <img src="{{ asset('img/'~cat.filename) }}" alt="{{ cat.name }}">
+            <img src="{{ asset('cats/'~cat.filename) }}" alt="{{ cat.name }}">
             <div class="price">{{ cat.price }}€ seulement</div>
             <button id="cart-add-button">Ajouter au panier !</button>
         </div>

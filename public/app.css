@@ -1,10 +1,11 @@
 html, body {
     min-height: 100%;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body {
     margin: 0;
-    background-image: url("bg.png");
+    background-image: url("img/bg.png");
 }
 
 .container {
@@ -35,12 +36,16 @@ header {
     justify-content: space-between;
     align-items: baseline;
     padding: 10px 0;
-    border-bottom: 5px dotted hotpink;
+    border-bottom: 5px dotted #EF314C;
     margin-bottom: 25px;
 }
 
 .logo {
-    font-size: 24px;
+    font-size: 38px;
+}
+
+.logo img {
+    max-height: 42px;
 }
 
 .cat-list {
@@ -84,26 +89,43 @@ header {
     display: inline-block;
     font-size: 24px;
     font-weight: bold;
-    border: 5px dotted hotpink;
+    border: 5px dotted #EF314C;
     padding: 10px;
     box-sizing: border-box;
     margin-bottom: 20px;
 }
 
+input, textarea {
+    font-family: inherit;
+}
+
+.cart-link img {
+    display: inline-block;
+    max-height: 24px;
+}
+
 button {
+    font-family: inherit;
     display: block;
     background: none;
     border: none;
     outline: none;
-    background-color: hotpink;
+    background-color: #EF314C;
     padding: 6px 10px;
     border-radius: 3px;
     cursor: pointer;
     margin-bottom: 20px;
+    color: #FFF;
 }
 
 button:hover {
-    background-color: deeppink;
+    background-color: #d91833;
+}
+
+footer {
+    margin-top: 60px;
+    padding: 20px 0;
+    text-align: center;
 }
 
 @media screen and (min-width: 523px){
