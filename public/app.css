@@ -1,3 +1,9 @@
+:root {
+    --light-pink: #FAE8FA;
+    --pink: #EF314C;
+    --dark-pink: #d91833;
+}
+
 html, body {
     min-height: 100%;
     font-family: 'Montserrat', sans-serif;
@@ -14,8 +20,8 @@ body {
     padding: 0 15px;
     background-color: rgba(255,255,255,0.7);
     min-height: 100vh;
-    border-left: 1px solid #FAE8FA;
-    border-right: 1px solid #FAE8FA;
+    border-left: 1px solid var(--light-pink);
+    border-right: 1px solid var(--light-pink);
 }
 
 a {
@@ -34,9 +40,9 @@ h1, h2, h3, h4 {
 header {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: flex-end;
     padding: 10px 0;
-    border-bottom: 5px dotted #EF314C;
+    border-bottom: 5px dotted var(--pink);
     margin-bottom: 25px;
 }
 
@@ -89,7 +95,7 @@ header {
     display: inline-block;
     font-size: 24px;
     font-weight: bold;
-    border: 5px dotted #EF314C;
+    border: 5px dotted var(--pink);
     padding: 10px;
     box-sizing: border-box;
     margin-bottom: 20px;
@@ -110,7 +116,7 @@ button {
     background: none;
     border: none;
     outline: none;
-    background-color: #EF314C;
+    background-color: var(--pink);
     padding: 6px 10px;
     border-radius: 3px;
     cursor: pointer;
@@ -119,7 +125,29 @@ button {
 }
 
 button:hover {
-    background-color: #d91833;
+    background-color: var(--dark-pink);
+}
+
+#search-form {
+    position: relative;
+}
+
+#search-form label {
+    display: block;
+}
+
+#results {
+    position: absolute;
+    background-color: rgba(255,255,255,0.95);
+    width: 100%;
+    border: 1px solid #EEE;
+    box-sizing: border-box;
+    z-index: 100;
+}
+
+#results a {
+    display: block;
+    padding: 10px 5px;
 }
 
 footer {
