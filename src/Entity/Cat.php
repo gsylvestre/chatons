@@ -67,6 +67,11 @@ class Cat
      */
     private $isSold;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $dateUpdated;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -140,6 +145,18 @@ class Cat
     public function setIsSold(bool $isSold): self
     {
         $this->isSold = $isSold;
+
+        return $this;
+    }
+
+    public function getDateUpdated(): ?\DateTimeInterface
+    {
+        return $this->dateUpdated;
+    }
+
+    public function setDateUpdated(?\DateTimeInterface $dateUpdated): self
+    {
+        $this->dateUpdated = $dateUpdated;
 
         return $this;
     }

@@ -19,7 +19,7 @@ class CatType extends AbstractType
                 'mapped' => false,
                 'constraints' => [
                     new Image([
-                        'minWidth' => 1080,
+                        //'minWidth' => 1080,
                         'maxSize' => '10000k',
                         'maxSizeMessage' => 'Trop gros ton chat'
                     ])
