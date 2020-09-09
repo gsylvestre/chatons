@@ -9,7 +9,7 @@
         <div class="left-col">
             <img src="{{ asset('cats/'~cat.filename) }}" alt="{{ cat.name }}">
             <div class="price">{{ cat.price }}€ seulement</div>
-            <button id="cart-add-button" data-cat-id="{{ cat.id }}" data-ajax-url="{{ url('api_add_to_cart') }}">Ajouter au panier !</button>
+            <a href="{{ path('cart_add', {'id': cat.id}) }}">Ajouter au panier !</a>
         </div>
         <div>
             <h1>{{ cat.name }}</h1>
