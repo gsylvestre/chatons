@@ -22,6 +22,12 @@
         </form>
         <nav>
             <a href="#" class="cart-link" title="Voir mon panier"><img src="{{ asset('img/cart.png') }}" alt="Panier"></a>
+            {% if app.user %}
+                <a href="{{ path('app_logout') }}">Déconnexion</a>
+            {% else %}
+                <a href="{{ path('app_login') }}">Connexion</a>
+                <a href="{{ path('app_register') }}">Créer mon compte</a>
+            {% endif %}
         </nav>
     </header>
     <main>
