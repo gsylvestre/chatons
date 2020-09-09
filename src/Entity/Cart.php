@@ -46,6 +46,15 @@ class Cart
      */
     private $cartProducts;
 
+    public function getCartTotal()
+    {
+        $sum = 0;
+        foreach($this->getCartProducts() as $product){
+            $sum += $product->getProduct()->getPrice();
+        }
+        return $sum;
+    }
+
     public function __construct()
     {
         $this->cartProducts = new ArrayCollection();

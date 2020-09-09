@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Votre panier !{% endblock %}
+
+{% block body %}
+    <h2>Votre panier</h2>
+    {% if cart.cartProducts|length <= 0 %}
+        <div>Votre panier est vide !</div>
+    {% else %}
+        <table class="cart-table">
+        {% for cartProduct in cart.cartProducts %}
+            <tr>
+                <td>{{ cartProduct.product.name }}</td>
+                <td>{{ cartProduct.product.price }}€</td>
+            </tr>
+        {% endfor %}
+            <tr>
+                <td>Total</td>
+                <td>{{ cart.getCartTotal() }}€</td>
+            </tr>
+        </table>
+        <a href="#">Valider mon panier !</a>
+    {% endif %}
+{% endblock %}

@@ -161,6 +161,16 @@ footer {
     margin: 10px 0 3px 0;
 }
 
+.cart-table {
+    margin-bottom: 20px;
+}
+
+.cart-table td {
+    padding: 4px 10px 4px 0;
+    border-bottom: 1px solid #CCC;
+    border-collapse: collapse;
+}
+
 @media screen and (min-width: 523px){
     .container {
         max-width: 478px;

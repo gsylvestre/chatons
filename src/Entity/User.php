@@ -43,6 +43,17 @@ class User implements UserInterface
      */
     private $carts;
 
+    public function getActiveCart()
+    {
+        foreach($this->getCarts() as $cart){
+            if ($cart->getStatus() === "active"){
+                return $cart;
+            }
+        }
+
+        return null;
+    }
+
     public function __construct()
     {
         $this->carts = new ArrayCollection();

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Cart;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\AppAuthenticator;
@@ -32,8 +33,15 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            //crée un premier panier vide à notre user
+            $cart = new Cart();
+            $cart->setUser($user);
+            $cart->setDateCreated(new \DateTime());
+            $cart->setStatus("active");
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
+            $entityManager->persist($cart);
             $entityManager->flush();
             // do anything else you need here, like send an email
 

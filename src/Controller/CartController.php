@@ -15,6 +15,22 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class CartController extends AbstractController
 {
+
+    /**
+     * @Route("/display/{id}", name="display", requirements={"id": "\d+"})
+     */
+    public function display(int $id, CartRepository $cartRepository, EntityManagerInterface $em)
+    {
+        $cart = $cartRepository->find($id);
+        if (!$cart){
+
+        }
+
+        return $this->render('cart/display.html.twig', [
+            'cart' => $cart
+        ]);
+    }
+
     /**
      * @Route("/add/{id}", name="add", requirements={"id": "\d+"})
      */
@@ -30,7 +46,7 @@ class CartController extends AbstractController
             $cart = new Cart();
             $cart->setUser($this->getUser());
             $cart->setDateCreated(new \DateTime());
-            $cart->setStatus("new");
+            $cart->setStatus("active");
         }
 
         $cat = $catRepository->find($id);
