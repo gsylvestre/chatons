@@ -9,6 +9,7 @@ use App\Repository\CatRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @Route("/cart", name="cart_")
@@ -34,7 +35,7 @@ class CartController extends AbstractController
     /**
      * @Route("/add/{id}", name="add", requirements={"id": "\d+"})
      */
-    public function add(int $id, CartRepository $cartRepository, CatRepository $catRepository, EntityManagerInterface $em)
+    public function add(int $id, CartRepository $cartRepository, CatRepository $catRepository, EntityManagerInterface $em, TranslatorInterface $translator)
     {
         if (!$this->getUser()){
             $this->addFlash('warning', 'Merci de vous connecter avant !');
@@ -59,7 +60,7 @@ class CartController extends AbstractController
         $em->persist($cartProduct);
         $em->flush();
 
-        $this->addFlash("success", "Chaton ajouté au panier !");
+        $this->addFlash("success", $translator->trans('cat.added.to.cart'));
         return $this->redirectToRoute('home');
     }
 }

@@ -14,9 +14,9 @@
 <body>
 <div class="container">
     <header>
-        <a href="{{ path('home') }}" title="Retour à l'accueil" class="logo"><img src="{{ asset('img/logo.png') }}" alt="logo chatons.com">chatons.com</a>
+        <a href="{{ path('home') }}" title="{% trans %}go.back.home{% endtrans %}" class="logo"><img src="{{ asset('img/logo.png') }}" alt="logo chatons.com">chatons.com</a>
         <form id="search-form" action="{{ url('api_cats_search') }}">
-            <label for="keyword">Rechercher</label>
+            <label for="keyword">{% trans %}search{% endtrans %}</label>
             <input type="search" id="keyword" name="keyword">
             <div id="results"></div>
         </form>
