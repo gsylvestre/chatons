@@ -19,11 +19,12 @@ class ApiController extends AbstractController
      */
     public function catsSearch(Request $request, CatRepository $catRepository)
     {
+        //récupère le mot-clef envoyé
         $keyword = $request->query->get('keyword');
+        //appelle ma méthode perso pour faire la recherche (voir le CatRepository)
         $foundCats = $catRepository->search($keyword);
 
-        //c'est moche, mais bon
-        //je souhaite que l'API puisse renvoyer l'Url de détail pour chaque chat
+        //c'est moche, mais bon, je souhaite que l'API puisse renvoyer l'Url de détail pour chaque chat
         //mais je n'ai pas accès au Router depuis les entités
         foreach($foundCats as &$foundCat){
             $detailUrl = $this->generateUrl('cat_detail', ['id' => $foundCat->getId()]);
@@ -40,15 +41,21 @@ class ApiController extends AbstractController
     }
 
     /**
+     * Attention, je laisse ce code là, mais il n'est pas utilisé.
+     * L'ajout au panier se fait en mode HTTP normal, dans le CartController
+     *
      * @Route("/api/v1/cart/add", name="api_add_to_cart", methods={"POST"})
      */
     public function addToCart(Request $request)
     {
-        //requête à la bdd
+        //récupère le contenu json envoyé avec la requête AJAX
         $json = $request->getContent();
+        //convertie le json en objet
         $data = json_decode($json);
+        //récupère l'id
         $catId = $data->id;
 
+        //renvoie une réponse json
         return new JsonResponse([
             "status" => "ok",
             "data" => [

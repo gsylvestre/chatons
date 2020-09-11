@@ -20,8 +20,11 @@ class RegistrationController extends AbstractController
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, AppAuthenticator $authenticator): Response
     {
+        //crée un nouveau user
         $user = new User();
+        //et son formulaire
         $form = $this->createForm(RegistrationFormType::class, $user);
+        //récupère les données du from
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -39,12 +42,13 @@ class RegistrationController extends AbstractController
             $cart->setDateCreated(new \DateTime());
             $cart->setStatus("active");
 
+            //sauvegarde tout ça en bdd
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->persist($cart);
             $entityManager->flush();
-            // do anything else you need here, like send an email
 
+            //connecte l'utilisateur
             return $guardHandler->authenticateUserAndHandleSuccess(
                 $user,
                 $request,
@@ -53,6 +57,7 @@ class RegistrationController extends AbstractController
             );
         }
 
+        //affiche le formulaire d'inscription
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);

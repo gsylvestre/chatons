@@ -13,8 +13,10 @@ class CatController extends AbstractController
      */
     public function home(CatRepository $catRepository)
     {
+        //récupère les chatons non vendus
         $cats = $catRepository->findBy(['isSold' => false], ['dateCreated' => 'DESC'], 100);
 
+        //les affiche
         return $this->render('cat/home.html.twig', [
             'cats' => $cats
         ]);
@@ -25,11 +27,14 @@ class CatController extends AbstractController
      */
     public function detail(CatRepository $catRepository, int $id)
     {
+        //récupère le chaton à afficher
         $cat = $catRepository->find($id);
+        //404 si on le trouve pas
         if(!$cat){
             throw $this->createNotFoundException('Chat perdu !');
         }
 
+        //affiche le chaton
         return $this->render('cat/detail.html.twig', [
             'cat' => $cat
         ]);
