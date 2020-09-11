@@ -6,11 +6,17 @@ use claviska\SimpleImage;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
+/**
+ * Ceci est un service !
+ * Il permet de redimensionner nos images
+ */
 class PictureResizer
 {
     protected $parameterBag;
     protected $em;
 
+    //injection de dépendances !
+    //on demande à Symfony de nous passer les services dont nous avons besoin
     public function __construct(EntityManagerInterface $em, ParameterBagInterface $parameterBag)
     {
         $this->em = $em;
@@ -32,5 +38,7 @@ class PictureResizer
         //crée une version en noir et blanc
 
         //etc...
+
+        //je pourrais utiliser $this->em pour interagir avec la bdd ici
     }
 }

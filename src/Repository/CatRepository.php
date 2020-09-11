@@ -22,9 +22,11 @@ class CatRepository extends ServiceEntityRepository
 
     public function search(string $keyword): ?array
     {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.name LIKE :kw')
-            ->setParameter('kw', $keyword . '%')
+        //querybuilder pour faire une requête perso
+        //recherche les chatons dont le nom commence par le $keyword
+        return $this->createQueryBuilder('c') //alias
+            ->andWhere('c.name LIKE :kw') //LIKE ici pour que le % fonctionne, et on utilise bien un paramètre nommé pour la sécurité
+            ->setParameter('kw', $keyword . '%') //remplace le paramètre, tout en ajoutant un % (joker)
             ->getQuery()
             ->getResult()
         ;

@@ -11,6 +11,12 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
+/**
+ * cette commande permet de générer les chatons d'origine, à partir de l'api d'unsplash
+ * pas beaucoup testée !
+ * S'exécute avec :
+ * php bin/console app:cats
+ */
 class CatsCommand extends Command
 {
     protected static $defaultName = 'app:cats';
@@ -67,6 +73,7 @@ class CatsCommand extends Command
             $io->text($cat->getName());
         }
 
+        //on flush une seule fois pour tous les chatons, plus rapide !
         $this->em->flush();
 
         $io->success('Done!');
